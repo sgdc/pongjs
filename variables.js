@@ -3,13 +3,6 @@ var context;
 var fps = 60;
 var interval = 1000 / fps;
 
-var keys = {
-	s: false,
-	w: false,
-	up: false,
-	down: false
-};
-
 var paddleLeft = {
 	x: 5,
 	y: 165,

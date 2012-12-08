@@ -1,32 +1,15 @@
 $(document).ready(function()
 {
-	canvas = $('#pong-canvas').get(0);
-	context = canvas.getContext('2d');
-
-	$(window).keydown(function(e) {
-		if(e.keyCode == 87)
-			keys.w = true;
-		if(e.keyCode == 83)
-			keys.s = true;
-		if(e.keyCode == 38)
-			keys.up = true;
-		if(e.keyCode == 40)
-			keys.down = true;
-	});
-
-	$(window).keyup(function(e) {
-		if(e.keyCode == 87)
-			keys.w = false;
-		if(e.keyCode == 83)
-			keys.s = false;
-		if(e.keyCode == 38)
-			keys.up = false;
-		if(e.keyCode == 40)
-			keys.down = false;
-	});
-
+	init();
     game();
 });
+
+function init()
+{
+	canvas = $('#pong-canvas').get(0);
+	context = canvas.getContext('2d');
+	initInput();
+}
 
 function game()
 {
@@ -54,6 +37,9 @@ function draw()
 {
 	context.fillStyle = '#000000';
 	context.fillRect(0, 0, 800, 600);
+	context.fillStyle = '#555555';
+	for(var y = 5; y < 400; y += 20)
+		context.fillRect(399, y, 2, 10);
 
 	context.fillStyle = '#FFFFFF';
 	context.fillRect(paddleLeft.x, paddleLeft.y, paddleLeft.w, paddleLeft.h);
