@@ -1,4 +1,4 @@
 pongjs
 ======
 
-Classic Pong in HTML and JS.
+Classic Pong in HTML and JS. Build for the Stevens Game Development Club.

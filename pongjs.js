@@ -1,24 +1,3 @@
-var fps = 60;
-var interval = 1000 / fps;
-
-var paddleLeft = {
-	x: 5,
-	y: 125,
-	w: 5,
-	h: 50,
-	speed: 0
-};
-var paddleRight = {
-	x: 590,
-	y: 125,
-	w: 5,
-	h: 50,
-	speed: 0
-}
-
-var canvas;
-var context;
-
 $(document).ready(function()
 {
 	canvas = $('#pong-canvas').get(0);
@@ -42,20 +21,32 @@ $(document).ready(function()
 			paddleRight.speed = 0;
 	});
 
-    update();
+    game();
 });
+
+function game()
+{
+	setTimeout(function() {
+        window.requestAnimationFrame(game);
+
+        update();
+        draw();
+    }, interval);
+}
 
 function update()
 {
-	setTimeout(function() {
-        window.requestAnimationFrame(update);
+	paddleLeft.y += paddleLeft.speed;
+	paddleRight.y += paddleRight.speed;	
+}
 
-	    context.fillStyle = '#000000';
-	    context.fillRect(0, 0, 600, 300);
-	    context.fillStyle = '#FFFFFF';
-	    paddleLeft.y += paddleLeft.speed;
-	    paddleRight.y += paddleRight.speed;
-	    context.fillRect(paddleLeft.x, paddleLeft.y, paddleLeft.w, paddleLeft.h);
-	    context.fillRect(paddleRight.x, paddleRight.y, paddleRight.w, paddleRight.h);
-    }, interval);
+function draw()
+{
+	context.fillStyle = '#000000';
+	context.fillRect(0, 0, 800, 600);
+
+	context.fillStyle = '#FFFFFF';
+	context.fillRect(paddleLeft.x, paddleLeft.y, paddleLeft.w, paddleLeft.h);
+	context.fillRect(paddleRight.x, paddleRight.y, paddleRight.w, paddleRight.h);
+	context.fillRect(ball.x, ball.y, ball.w, ball.h);
 }
