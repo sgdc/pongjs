@@ -3,23 +3,19 @@ var context;
 var fps = 60;
 var interval = 1000 / fps;
 
-var paddleLeft = {
-	x: 5,
-	y: 165,
-	w: 5,
-	h: 70,
-	speed: 5
-};
-var paddleRight = {
-	x: 790,
-	y: 165,
-	w: 5,
-	h: 70,
-	speed: 5
+function Rectangle(x, y, w, h)
+{
+	this.x = x;
+	this.y = y;
+	this.w = w;
+	this.h = h;
 }
-var ball = {
-	x: 397,
-	y: 197,
-	w: 6,
-	h: 6
-}
+
+var paddleLeft = new Rectangle(5, 165, 5, 70);
+paddleLeft.speed = 5;
+
+var paddleRight = new Rectangle(790, 165, 5, 70);
+paddleRight.speed = 5;
+
+var ball = new Rectangle(397, 197, 6, 6);
+ball.velocity = { x: -5, y: 7 };
