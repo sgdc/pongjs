@@ -5,20 +5,24 @@ $(document).ready(function()
 
 	$(window).keydown(function(e) {
 		if(e.keyCode == 87)
-			paddleLeft.speed = -5;
-		else if(e.keyCode == 83)
-			paddleLeft.speed = 5;
+			keys.w = true;
+		if(e.keyCode == 83)
+			keys.s = true;
 		if(e.keyCode == 38)
-			paddleRight.speed = -5;
-		else if(e.keyCode == 40)
-			paddleRight.speed = 5;
+			keys.up = true;
+		if(e.keyCode == 40)
+			keys.down = true;
 	});
 
 	$(window).keyup(function(e) {
-		if(e.keyCode == 87 || e.keyCode == 83)
-			paddleLeft.speed = 0;
-		if(e.keyCode == 38 || e.keyCode == 40)
-			paddleRight.speed = 0;
+		if(e.keyCode == 87)
+			keys.w = false;
+		if(e.keyCode == 83)
+			keys.s = false;
+		if(e.keyCode == 38)
+			keys.up = false;
+		if(e.keyCode == 40)
+			keys.down = false;
 	});
 
     game();
@@ -36,8 +40,14 @@ function game()
 
 function update()
 {
-	paddleLeft.y += paddleLeft.speed;
-	paddleRight.y += paddleRight.speed;	
+	if(keys.w)
+		paddleLeft.y -= paddleLeft.speed;
+	if(keys.s)
+		paddleLeft.y += paddleLeft.speed;
+	if(keys.up)
+		paddleRight.y -= paddleRight.speed;	
+	if(keys.down)
+		paddleRight.y += paddleRight.speed;
 }
 
 function draw()

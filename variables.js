@@ -1,19 +1,28 @@
+var canvas;
+var context;
 var fps = 60;
 var interval = 1000 / fps;
+
+var keys = {
+	s: false,
+	w: false,
+	up: false,
+	down: false
+};
 
 var paddleLeft = {
 	x: 5,
 	y: 165,
 	w: 5,
 	h: 70,
-	speed: 0
+	speed: 5
 };
 var paddleRight = {
 	x: 790,
 	y: 165,
 	w: 5,
 	h: 70,
-	speed: 0
+	speed: 5
 }
 var ball = {
 	x: 397,
@@ -21,6 +30,3 @@ var ball = {
 	w: 6,
 	h: 6
 }
-
-var canvas;
-var context;
